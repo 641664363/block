@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+
 #import "SecondViewController.h"
 @interface ViewController ()<SecondViewControllerDelegate>
 @property(nonatomic,strong)UIButton *delegateBtn;
+
 @end
 
 @implementation ViewController
@@ -17,9 +19,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+
     self.title = @"delegate";
     self.view.backgroundColor = [UIColor clearColor];
     [self createUI];
+
+}
+
+-(void)createUI{
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btn setTitle:@"block" forState:UIControlStateNormal];
+    btn.frame = CGRectMake(0, 200, self.view.bounds.size.width, 30);
+    btn.backgroundColor = [UIColor grayColor];
+    [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+    _label = [[UILabel alloc]init];
+    _label.frame = CGRectMake(0, 400, self.view.bounds.size.width, 30);
+    _label.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:_label];
+    
+}
+
+-(void)click:(UIButton *)sender{
+    secondViewController * second = [[secondViewController alloc]init];
+    second.backgroud = ^(UIColor * color){
+        _label.backgroundColor = color;
+    };
+    [self.navigationController pushViewController:second animated:YES];
+>>>>>>> 554de7b3f01df806ada41f2aac6823a974519be5
 }
 
 -(void)createUI{
