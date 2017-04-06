@@ -47,7 +47,7 @@
         _label.backgroundColor = color;
     };
     [self.navigationController pushViewController:second animated:YES];
->>>>>>> 554de7b3f01df806ada41f2aac6823a974519be5
+
 }
 
 -(void)createUI{
